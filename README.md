@@ -29,7 +29,7 @@
 # In your C# backend, use the following class to send data and receive predictions from the AI API
 # 📌 Make sure Flask is still running in the background before calling the API from C#.
 # this is the code that contains sensor readings in order to get results :
-using System.Net.Http;
+<!-- using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -78,18 +78,18 @@ public class GreenhouseAIClient
 
         return result;
     }
-}
+} -->
  ----- 
 
  # Step 6: Test the Integration
  # In your C# app, create a method to test the client:
 
- public async Task TestPrediction()
+ <!-- public async Task TestPrediction()
 {
     var client = new GreenhouseAIClient();
     var prediction = await client.GetAIPredictionAsync();
     Console.WriteLine("Prediction: " + prediction);
-}
+} -->
 
 # Run this and ensure you see the prediction printed in your console.
 # you should see output like this :  {"predicted_humidity": 61.36, "predicted_moisture": 58.13, "predicted_temperature": 22.94}
