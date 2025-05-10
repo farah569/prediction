@@ -56,6 +56,11 @@ NUM_FEATURES = len(FEATURES)
 
 app = Flask(__name__)
 
+# ✅ New route for root URL
+@app.route('/', methods=['GET'])
+def home():
+    return "✅ API is running. Use POST /predict with JSON payload to get predictions."
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -79,7 +84,6 @@ def predict():
         # Create a dummy row with predicted values + dummy crop one-hot for inverse transform
         dummy_row = np.zeros((1, NUM_FEATURES))
         dummy_row[0, :3] = prediction_scaled[0]  # temp, humidity, moisture
-        # Copy crop type one-hot from last input row
         dummy_row[0, 3:] = sequence_np[-1, 3:]
 
         # Inverse transform to get real-world values
@@ -96,4 +100,5 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
